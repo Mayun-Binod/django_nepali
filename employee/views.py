@@ -9,4 +9,18 @@ def index(request):
 
 def employee(request):
     # return HttpResponse("this is employee page")
-     return render(request,'employee/employee.html')
+    if request.method == 'POST':  # Correcting 'POSt' to 'POST'
+        data = request.POST
+        email = data['email']
+        password = data['password']
+        context = {
+            'name': email,
+            'address': password,
+        }
+    else:
+        context = {
+            'name': "Binod",
+            'address': "Lalitpur",
+        }
+
+    return render(request, 'employee/employee.html', context)
