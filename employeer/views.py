@@ -1,8 +1,23 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .forms import EmployeerForm
 # Create your views here.
 
 def employeer(request):
+    form=EmployeerForm()
+    context={
+        'form':form
+    }
+    if request.method=='POST':
+        form=EmployeerForm(request.POST)
+        print(form.is_valid())
+        data=form.cleaned_data
+        print(data['name'])  
+    return render(request,'employeer/employeer.html',context)
+
+
+
+# def employeer(request):
      
     # return HttpResponse("this is employee page")
     # context = {
@@ -32,4 +47,4 @@ def employeer(request):
     # print(data)
     # email=data['email']
     # print(email)
-    return render(request,'employeer/employeer.html')
+    # return render(request,'employeer/employeer.html')
