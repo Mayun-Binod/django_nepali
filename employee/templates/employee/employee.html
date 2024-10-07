@@ -2,8 +2,10 @@
 
 {% block main %}
 <div class="container">
-    <h1>hello i am in employee page block</h1>
-    Name:{{name}} <br>
-    Address:{{address}}
+   <form action="" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">submit</button>
+   </form>
 </div>
  {% endblock %}
